@@ -1,0 +1,28 @@
+[column]
+====
+
+[text]
+.Scripting
+--
+The shell is the traditional user interface to unixoid systems.
+
+There are a lot of shell tools that can be used to view and edit the contents of a text file. 
+Among those are cat, vim and nano.
+--
+
+
+[multi]
+.Which of these is a shell tool used to display the contents of a file?
+--
+- read
+- *cat*
+- disp
+- dog
+--
+
+[code, python]
+----
+print("Hello World!");
+----
+
+====

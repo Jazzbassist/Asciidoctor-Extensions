@@ -1,0 +1,10 @@
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [<%
+   if @attributes[1]=="math"
+%>    "$<%=content.gsub("\x5C", "\x5C\x5C\x5C").gsub(/\n+/, "\n").gsub("\n",%(",\n"))%>$"<%
+    else
+%>    "<%=content.gsub("\n",%(",\n"))%>"<%end
+%>   ]
+  },

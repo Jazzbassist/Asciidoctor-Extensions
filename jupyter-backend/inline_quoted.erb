@@ -1,0 +1,14 @@
+<%
+class_attr = (style_class = role) ? %( class="#{style_class}") : nil
+case @type
+when :emphasis %><%= %(<em>#{@text}</em>) %><%
+when :strong %><% unless text.include? "*"%><%=%(<strong>#{@text}</strong>)%>
+<%else%><%=text%><%end%><%
+when :monospaced %><%= %(<code>#{@text}</code>) %><%
+when :superscript %><%= %(SUPERSCRIPT) %><%	
+when :subscript %><%= %(SUBSCRIPT) %><%
+when :double %><%= class_attr ? %(DOUBLE) : %(DOUBLEWITHOUTATTR) %><%
+when :single %><%= class_attr ? %(SINGLE) : %(SINGLEWITHOUTATTR) %><%
+when :asciimath, :latexmath%>$<%= @text.gsub("\x5C", "\x5C\x5C\x5C") %>$<%
+else %><%= %(ELSE) %><%
+end %>

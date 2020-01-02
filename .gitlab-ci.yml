@@ -1,0 +1,19 @@
+image: ruby:2-stretch
+
+before_script:
+  - apt-get update
+  - apt-get install -y zip
+  - gem install bundler
+  - bundle install
+
+job:
+  tags: 
+  - docker
+  stage: deploy
+  script:
+  - ./buildall.sh
+  artifacts:
+    paths:
+    - out/h5p/
+    - out/html/
+    - out/jupyter/

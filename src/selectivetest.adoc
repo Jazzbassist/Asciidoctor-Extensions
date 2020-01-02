@@ -1,0 +1,53 @@
+[column, uebung]
+====
+
+[code, uebung]
+----
+print ("i am part of an exercise")
+----
+
+[quiz, uebung]
+=====
+[multi]
+.multi in quiz in column, uebung
+--
+- read
+- *cat*
+- disp
+- dog
+--
+=====
+
+[text, vorlesung, uebung]
+--
+text, vorlesung, uebung, not in vorlesung cause containing column is in uebung
+--
+
+[text, vorlesung, uebung]
+--
+text, vorlesung, uebung
+--
+
+[text, vorlesung]
+--
+text, vorlesung
+--
+
+[text, uebung]
+--
+text, uebung
+--
+
+[mytable, uebung, vorlesung]
+|=== 
+| Cell in column 1, row 1 | Cell in column 2, row 1  
+| Cell in column 1, row 2 | Cell in column 2, row 2
+| Cell in column 1, row 3 | Cell in column 2, row 3
+|===
+
+[math, vorlesung, uebung]
+++++
+    x^n + y^n = z^n
+++++
+
+====

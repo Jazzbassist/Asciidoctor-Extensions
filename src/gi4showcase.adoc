@@ -1,0 +1,86 @@
+[column]
+====
+
+[text]
+.The Unix Toolchain
+--
+To create an executable from a collection of source files, unixoid operating systems usually provide a toolchain consisting of five basic components:
+
+The compiler takes each individual source file and turns it into assembly code. Assembly is relatively close to the final machine code that will be generated but is still readable by humans, using mnemonics to codify basic CPU operations.
+
+The step from assembly to actual machine code is bridged by the assembler. Files created by the assembler are not encoded in Unicode or ASCII anymore, rendering them unreadable to most reader applications, let alone humans.
+
+After assembly, a machine code file exists for each source file. A lot of times however, code is built on top of one another, including information or calling functions from another source file. Because all these modules need to know each others' location in memory to be able to call each other, the linker is needed to produce a single file from the modules, substituting function calls with their relative location in the file.
+
+Finally, the loader is used to load this file into memory, where it can be called and run
+--
+
+[text]
+.Scripting
+--
+Among other useful tools, unixoid systems will always provide some sort of shell, often the bourne-again-shell (bash). Other shells include but are not limited to the z-shell (zsh), c-shell (csh), korn shell (ksh), friendly interactive shell (fish) and others. A UNIX shell comes with a lot of useful tools, some of which will be explored below.
+
+Vim is a powerful text editor which runs fully in the shell. Albeit relying on a somewhat unintuitive UI, many people report being able to work a lot faster in vim than in other editors after getting to grips with the keybindings. Notably, vim enables the user to quickly delete and move whole lines via powerful shorthands.
+
+If you only want to to read a file, you can use cat to display it in the shell. The output of cat can also be piped into other commands, for example you could use 
+cat file.txt | grep date
+to only display those lines of file.txt which contain the word date. In this scenario, the output of cat is not displayed but used as an input for grep. 
+
+Instead of using cat, you could also directly read the file into grep by using < :
+
+grep date < file.txt
+
+It is also possible to then divert the output of grep into another file like this:
+
+grep date < file.txt > datelines.txt
+
+By using a single >, any content in datelines.txt is overwritten, to instead append the new content, you have to use >>. 
+
+Another important shell tool is ls. You can use it to display the content of the current directory. To change that directory, use cd.
+--
+
+[quiz]
+=====
+[markwords]
+.Mark every word that is an element of the UNIX toolchain from a source file to executable code
+--
+*Linker* Reader Translator *Assembler* *Loader* Maker *Compiler* Executor
+--
+
+[dragtext]
+.Now put the Elements in the correct order
+--
+source files -> *Compiler* -> assembly files -> *Assembler* -> machine code files -> *Linker* -> one machine code file -> *Loader* -> machine code ready for execution 
+--
+=====
+
+[quiz]
+.Get this quiz right
+=====
+[multi]
+.Which of these is a shell tool used to display the contents of a file?
+--
+- read
+- *cat*
+- disp
+- dog
+--
+
+[fillblanks]
+.Finish this shell script to display all filenames in the subdirectory 'sourcecode' which contain 'calculator'
+--
+*cd* sourcecode
+
+ls *|* g*rep* calculator
+--
+
+[truefalse]
+.Please rate the following statement either true or false
+--
+There are often multiple ways to achieve something when writing a shell script
+true
+--
+
+=====
+
+====

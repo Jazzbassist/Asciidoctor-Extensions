@@ -1,0 +1,6 @@
+"<%=
+content.gsub("\n","\\n")
+  .gsub(/{\\n}+/,"\\n")
+  .delete_prefix("\\n")
+  .gsub(%(","\\n), %(\\n",\n"))%><%#ensure line breaks are translated correctly%><%=
+%(\\n",\n"\\n",\n)%><%#add two line breaks after paragraph to ensure next paragraph is started anew%>

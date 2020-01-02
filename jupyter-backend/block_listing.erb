@@ -1,0 +1,12 @@
+<%# Code listings are converted to jupyter code%>  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "<%=content.gsub(%("), %(\\")).gsub("\n","\\n")
+  .gsub(/{\\n}+/,"\\n")
+  .delete_prefix("\\n")
+  .gsub(%(","\\n), %(\\n",\n"))%>"
+   ]
+  },

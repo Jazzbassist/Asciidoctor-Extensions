@@ -1,0 +1,40 @@
+<% 
+ntb=needtobuild? parent, @attributes
+#require 'pry'; binding.pry
+if ntb  
+case @attributes[1]
+when "multi"
+%>
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+     "print (\"<%=title%>\")\n",
+<%=content%><%#magic happens in block_ulist%>
+   ]
+  },
+<%
+when "image"
+  %>  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+   <%=content.chomp(%(,))%>
+   ]
+  },<%
+when "truefalse","dragtext","fillblanks","markwords","iframe"%><%=""%><%
+else
+%>  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+<%=content.chomp(%(,))
+%>
+   ]
+  },<%
+end #case @attributes
+end #if ntb
+%>
+

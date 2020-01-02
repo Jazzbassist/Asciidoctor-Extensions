@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+    <title>Thebelab</title>
+    <script type="text/x-thebe-config">
+      {
+        bootstrap: false,
+        preRenderHook: false,
+        requestKernel: true,
+        predefinedOutput: true,
+        outputSelector: '[data-output]',
+        selector: '[data-executable]',
+        binderOptions: {
+  		  repo: "minrk/ligo-binder",
+  		  ref: "master",
+  		}
+        },
+      }
+    </script>
+    <script type="text/javascript" src="https://unpkg.com/thebelab@^0.5.1"></script>
+  </head>
+  <body>
+    <pre data-executable="true" data-language="python">
+    </pre>
+    <div data-output="true">
+    </div>
+    <script>
+        const upload_url = 'https://upload.k8s.fein-aachen.org/';
+
+        function escapeHtml(unsafe) {
+          return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;")
+            .replace(/\\n/g,"\n")
+            .replace(/\\t/g,"\t");
+        }
+  
+        async function loadCode(id, mode) {
+          const selector = thebelab.getOption('selector');
+  
+          return fetch(upload_url.concat(id))
+            .then(function(response) {
+                return response.text()
+            })
+            //replace all line breaks with actual breaks, same with tabs
+            .then(function(data) {
+              console.log('Fetched code', data);
+
+              var cell = document.querySelector(selector);
+              
+              cell.innerHTML = escapeHtml(data);
+              cell.setAttribute('data-language', mode);
+            })
+            .catch(function(exp) {
+              console.log("Error with fetching code", exp);
+            });
+        }
+
+        async function loadOutput(id) {
+          const selector = thebelab.getOption('outputSelector');
+
+          return fetch(upload_url.concat(id))
+            .then(function(response) {
+              return response.text()
+            })
+            .then(function(data) {
+              console.log('Fetched output', data);
+  
+              document.querySelector(selector).innerHTML = escapeHtml(data);
+            })
+            .catch(function(exp) {
+              console.log("Error with fetching output", exp);
+            });
+        }
+  
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get('id');
+        var oid = url.searchParams.get('oid'); // output id
+        var autorun = url.searchParams.get('autorun');
+        var kernelName = url.searchParams.get('kernel-name') || 'python3';
+        var mode = url.searchParams.get('mode');
+
+        // Maps Jupyter kernel name to CodeMirror mode
+        // See: https://codemirror.net/mode/
+        const modeMap = {
+          'c' : 'clike',
+          'python3' : 'python',
+          'python2' : 'python',
+          'rust' : 'rust',
+        };
+
+        if (!mode && kernelName in modeMap)
+          mode = modeMap[kernelName];
+      
+        prom = []
+        if (id)
+          prom.push(loadCode(id, mode))
+      
+        if (oid)
+          prom.push(loadOutput(oid));
+  
+        (async function(){
+          await Promise.all(prom);
+          await thebelab.bootstrap({
+            kernelOptions : {
+              name: 'thebelab-' + kernelName,
+              path: 'thebelab-' + kernelName,
+              type: 'thebelab',
+              kernelName : kernelName
+            }
+          });
+
+          if (autorun) {
+            var cell = document.querySelector('.thebelab-cell');
+            const initButton = cell.querySelector('.thebelab-run-button');
+            initButton.click();
+          }
+        })();
+      </script>
+  </body>
+</html>

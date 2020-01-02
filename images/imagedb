@@ -1,0 +1,118 @@
+{
+  "beispiel": 
+  {
+    "path": "https://commons.wikimedia.org/wiki/File:Example_image_not_be_used_in_article_namespace.jpg",
+    "format": "image\/jpeg",
+    "width": 275,
+    "height": 297,
+    "alt": "This is what will be displayed if the image cannot be loaded",
+    "title": "This is what will be displayed on mouseover",
+    "subcontentid": "0",
+    "metadata": 
+    {
+      "title": "This is what will be displayed as title in the editor",
+      "authors":  
+      [{
+        "name": "Edgar Allan Poe",
+        "role": "Wikimedia user"
+      }],
+      "source": "https://commons.wikimedia.org/wiki/File:Example_image_not_be_used_in_article_namespace.jpg",
+    "license": "cc-sa",
+    "licenseVersion": "3.0"
+    }
+  },
+  "minimal":{
+    "contentName":"Image",
+    "file":{
+      "path":"images\/path.jpg",
+      "mime":"image\/jpeg",
+      "width":1920,
+      "height":1080,
+      "library":"H5P.Image 1.1"
+    }
+  },
+  "Split":{
+    "params":{
+      "contentName":"Image",
+      "file":{
+        "path":"images\/path.jpg",
+        "mime":"image\/jpeg",
+        "width":1920,
+        "height":1080,
+        "copyright":{"license":"U"}
+      },
+      "alt":"Split",
+      "title":"This is in Dalmatia"
+    },
+    "library":"H5P.Image 1.1"
+  },
+  "zwei":{
+    "image":"not found"
+  },
+  "blackberries":{
+    "params":{
+      "contentName":"Image",
+      "file":{
+        "path":"images\/file-5885c23902f31.jpg",
+        "mime":"image\/jpeg",
+        "width":1588,
+        "height":458
+      },
+      "alt":"Blackcurrants"
+    },
+    "library":"H5P.Image 1.1",
+    "subContentId":"f4e153ab-9205-422a-bf73-9eb6ab6f559e",
+    "metadata":{
+      "title":"Freshly Picked Blackcurrants",
+      "authors":[{"name":"Karen Jackson","role":"Author"}],
+      "source":"https:\/\/www.flickr.com\/photos\/72284410@N08\/9931852063\/in\/photolist-g8DkAF-FF57V-pQrisU-eNx7Xv-CVDop-dRqhxQ-f5wFEf-sBH1TD-GgGUH-fnuh5o-7TQn5D-euLUTZ-aCeni4-2toM6q-mHGje4-WSC8o-36TfgT-yEURne-rVjrmL-54cA6M-6ExHZG-a3M869-3ddWV-9VLJve-54e4ff-qFHgt-qFGVb-5jBdE3",
+      "license":"CC BY-ND",
+      "licenseVersion":"4.0"
+    }
+  },
+  "blueberries":{
+    "params":{
+      "contentName":"Image",
+      "file":{
+        "path":"images\/file-5885c18261805.jpg",
+        "mime":"image\/jpeg",
+        "width":1588,
+        "height":458,
+        "copyright":{"license":"U"}
+      },
+      "alt":"Image of blueberries",
+      "title":"Image of blueberries"
+    },
+    "library":"H5P.Image 1.1",
+    "subContentId":"a3ed0e6c-d9b0-4330-b4fa-9ed3c328d1e5",
+    "metadata":{
+      "title":"A bucketful of freshly picked bilberries.",
+      "authors":[{"name":"Mikko Muinonen","role":"Author"}],
+      "source":"https:\/\/www.flickr.com\/photos\/mikeancient\/5685771257\/in\/photolist-9Er4GV-GcqY5c-jypoL-7iS4Pv-JAoL7U-9BdfQX-9W889C-8AzZqc-JAoRvQ-nEPeF-gdtgb9-cUGvXs-757zpW-6J6quh-J5MPKo-2rma9X-8AD5h3-6J2kJg-JS1MiG-mYhroH-JUmgEF-JAoGLA-6J6qGo-JYdrRQ-8AzYet-6J2kec-JAnJWQ-5g",
+      "license":"CC BY-ND",
+      "licenseVersion":"4.0",
+      "contentType":"Image",
+      "changes":[]
+    }
+  },
+  "oslo":{
+    "params":{
+      "contentName":"Image",
+      "alt":"The Oslo Opera House",
+      "file":{
+        "path":"images\/file-582dbbc081261.jpg",
+        "mime":"image\/jpeg",
+        "width":2205,
+        "height":900
+      }
+    },
+    "library":"H5P.Image 1.1",
+    "subContentId":"939ee32a-0d36-4344-a433-3b060ce46744",
+    "metadata":{
+      "title":"The new Opera House in Oslo",
+      "authors":[{"name":"Rafa\u0142 Konieczny","role":"Author"}],
+      "source":"https:\/\/en.wikipedia.org\/wiki\/Oslo_Opera_House#\/media\/File:Full_Opera_by_night.jpg",
+      "license":"PD"
+    }
+  }
+}

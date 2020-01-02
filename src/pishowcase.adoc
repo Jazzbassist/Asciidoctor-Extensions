@@ -1,0 +1,85 @@
+[column]
+====
+[text]
+--
+This lesson covers the calculation of π.
+Before getting to the python code, please answer some introductory questions
+--
+
+[quiz]
+=====
+
+[multi]
+.Just to make sure, π is used to calculate the area of:
+--
+- *a circle*
+- a rectangle
+--
+
+[truefalse]
+--
+A circle with diameter d has a greater area than a square with sides of length d
+false
+--
+
+[markwords]
+.Mark all elements of the formula to calculate the circle area
+--
+angle 4 *radius* *^2* 2 ^3 e *π*
+--
+
+[fillblanks]
+.Complete the formula to calculate the area
+--
+area = π x r*^2*
+--
+
+
+[dragtext]
+.Put the pseudocode to approximate the area under a graph in the correct order.
+--
+1. *Divide area into rectangles*
+2. *Calculate area of each rectangle*
+3. *Sum up areas of rectangles*
+--
+
+=====
+[text, exercise]
+--
+Below, you find the sequential version of the π approximation. The variable nrecs defines the number of rectangles which will be drawn below the graph f. π is approximated by summing up the area of the rectangles.
+--
+
+[code]
+----
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as ptc
+
+nrecs=50000
+
+xs = np.linspace(-1,2,300)
+ys = 4/(1+xs*xs)
+section=[False]*300
+for i in range(100,200):
+    section[i]=True
+%matplotlib inline
+plt.plot (xs,ys)
+plt.fill_between(xs,ys,where=section)
+plt.xlabel('x')
+plt.ylabel('$f(x)$')
+plt.title('$f(x)= 4*((1+x^2)^{(-1)})$')
+sum=0
+heights=np.empty(nrecs)
+width=1/nrecs;
+for i in range(0, nrecs):
+    x=(i+0.5)*width
+    step=4.0/(1.0+x*x);
+    heights[i]=step
+    sum+=step
+#  rect=ptc.Rectangle((0.0,0.0),0.25,3.0,0.0)    plt.add_patch(rect)
+plt.show()
+print("Pi is", sum*width)
+----
+
+====
