@@ -20,7 +20,7 @@ GEM
     opal (0.6.3)
       source_map
       sprockets
-    rack (2.0.7)
+    rack (2.0.9.1)
     source_map (3.0.1)
       json
     sprockets (3.7.2)
